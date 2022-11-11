@@ -12,6 +12,7 @@ type ReminderGrain() =
     interface IReminderGrain with
         member this.ReceiveReminder(reminderName:string, status:TickStatus) : Task =
             task{
+                // Put your logic here
                 return! Task.CompletedTask
             }
             

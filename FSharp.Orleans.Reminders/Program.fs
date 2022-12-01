@@ -5,7 +5,6 @@ open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Orleans
 
-open Orleans.ApplicationParts
 open Orleans.Configuration
 open Orleans.Hosting
 open System.Net
@@ -31,8 +30,6 @@ let main args =
                                 .ConfigureServices(fun (serviceCollection:IServiceCollection) ->
                                     serviceCollection.AddHostedService<GrainActivatorHostedService>()                                    
                                     |> ignore
-                                ).ConfigureApplicationParts (fun(applicationPartManager:IApplicationPartManager) ->
-                                    applicationPartManager.ConfigureDefaults |> ignore
                                 ) |> ignore
                             |> ignore
                         ).Build()               

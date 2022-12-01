@@ -17,7 +17,7 @@ type ReminderGrain() =
                 return! Task.CompletedTask
             }
             
-        member this.WakeUp = () 
+        // member this.WakeUp = () 
                                     
     override _.OnActivateAsync(cancellationToken: CancellationToken) = 
         let _periodTimeInSeconds = TimeSpan.FromSeconds 60

@@ -11,6 +11,5 @@ type GrainActivatorHostedService(client:IGrainFactory) =
     let _client=client
 
     override this.ExecuteAsync(cancellationToken:CancellationToken) = task{
-        _client.GetGrain<IReminderGrain>("IReminderGrain")
-                .WakeUp;
+        _client.GetGrain<IReminderGrain>("IReminderGrain")        
     }

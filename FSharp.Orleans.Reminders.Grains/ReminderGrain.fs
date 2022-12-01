@@ -1,6 +1,7 @@
 module FSharp.Orleans.Reminders.Grains.ReminderGrain
 
 open System
+open System.Threading
 open System.Threading.Tasks
 open FSharp.Orleans.Reminders.Grains.IReminderGrain
 open Orleans
@@ -18,8 +19,8 @@ type ReminderGrain() =
             
         member this.WakeUp = () 
                                     
-    override _.OnActivateAsync() = 
+    override _.OnActivateAsync(cancellationToken: CancellationToken) = 
         let _periodTimeInSeconds = TimeSpan.FromSeconds 60
         let _dueTimeInSeconds = TimeSpan.FromSeconds 60
         let _reminder = base.RegisterOrUpdateReminder(base.GetPrimaryKeyString(), _dueTimeInSeconds, _periodTimeInSeconds)
-        base.OnActivateAsync()
+        base.OnActivateAsync(cancellationToken)
